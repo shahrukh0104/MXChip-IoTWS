@@ -185,10 +185,11 @@ De færreste av oss snakker et annet språk og vil ha det oversatt til engelsk. 
 
 Hint:
 
-- Se på de tre hovedfilene: **DevKitTranslatorFunction.cs**, **SpeechTranslation.cs**, og **DevKitTranslator.cs**.
+- Se på de tre hovedfilene: **DevKitTranslatorFunction.cs**, **SpeechTranslation.cs**, og **DevKitTranslator.ino**.
 - En måte å gjøre det på er ved å se nærmere på funksjonen **TranslationWithAudioStreamAsync()**, og se på argumentene til funksjonen.
 - NB! Skjermen på kortet er ikke så flink til å vise tegn som ikke er i det latinske alfabetet. Så det kan være en fordel å fjerne språkene som ikke bruker latinske bokstaver.
 - Husk å laste opp kode til både Azure og til device.
+- Husk også å endre på konstanten med antall språk.
 
 # Oppgave: Gjør om koden til å bli en universal-oversetter
 
@@ -196,7 +197,9 @@ Gikk det altfor fort å endre på de få kodelinjene? Frykt ikke. Vi har oppgave
 
 Hint:
 
-- Se
-- Endre
+- Nå må du gjøre endringer i de samme tre filene som sist. Men kanskje noe større grad i arduino fila.
+- For å gjøre det enklest mulig er det kanskje lettest å endre fra f.eks. `currentLanguage` til to variabler kalt `currentFromLanguage` og `currentToLanguage`. Det må også legges til en state og et scenario i state machinens switch-case.
+- I **HttpTriggerTranslator** fila må man både legge til header, men også endre på string formateringen. Her har du i begge tilfeller lyst til å legge til en _target_.
+- Du må og gjøre endringer i Azure Funksjonen.
 
 Når du er ferdig med oppgaven er du ferdig med denne workshopen! Hurra! Håper du føler at du har lært noe og at dette har trigget nysgjerrigheten for IoT-løsninger. Håper å se deg igjen på neste IoT Workshop! Vi tar veldig gjerne tilbakemeldinger og ideer til andre ting vi kan gjøre.

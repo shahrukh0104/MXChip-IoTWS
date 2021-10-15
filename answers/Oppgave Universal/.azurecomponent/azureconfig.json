@@ -1,0 +1,54 @@
+{
+    "componentConfigs": [
+        {
+            "id": "eb6ef485-d8bc-ae44-0fd9-361c87393e85",
+            "folder": "",
+            "name": "",
+            "dependencies": [],
+            "type": "IoTHub",
+            "componentInfo": {
+                "values": {
+                    "iotHubConnectionString": "HostName=mxdennis.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=eIGMdHTjeTYTddrQbC19jpCAF31o81OcY5vUfvSUqB4=",
+                    "eventHubConnectionString": "Endpoint=sb://ihsuprodamres119dednamespace.servicebus.windows.net/;      SharedAccessKeyName=iothubowner;SharedAccessKey=eIGMdHTjeTYTddrQbC19jpCAF31o81OcY5vUfvSUqB4=",
+                    "eventHubConnectionPath": "iothub-ehub-mxdennis-14727853-1faf59fdba"
+                }
+            }
+        },
+        {
+            "id": "df517096-75c6-6bfa-46ed-453e97a531d2",
+            "folder": "Functions",
+            "name": "",
+            "dependencies": [
+                {
+                    "id": "eb6ef485-d8bc-ae44-0fd9-361c87393e85",
+                    "type": 1
+                }
+            ],
+            "type": "AzureFunctions",
+            "componentInfo": {
+                "values": {
+                    "functionLanguage": "C#",
+                    "functionAppId": "/subscriptions/4e5b2e84-5d54-4218-b06f-94549268097e/resourceGroups/mxiot/providers/Microsoft.Web/sites/dennisSnakker"
+                }
+            }
+        },
+        {
+            "id": "a00463b0-5589-4756-7ab8-9e98cafdaa2a",
+            "folder": "",
+            "name": "",
+            "dependencies": [
+                {
+                    "id": "eb6ef485-d8bc-ae44-0fd9-361c87393e85",
+                    "type": 1
+                }
+            ],
+            "type": "IoTHubDevice",
+            "componentInfo": {
+                "values": {
+                    "iotHubConnectionString": "HostName=mxdennis.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=eIGMdHTjeTYTddrQbC19jpCAF31o81OcY5vUfvSUqB4=",
+                    "iotHubDeviceConnectionString": "HostName=mxdennis.azure-devices.net;DeviceId=newDennis;SharedAccessKey=D9YOCE++BfrmVlZfpk/Rtl+SVCa3SvcnJuJKiahOmgM="
+                }
+            }
+        }
+    ]
+}
