@@ -1,8 +1,8 @@
 # Bouvet Workshop: MXChip IoT DevKit AZ3166 Oversetter
 
-I denne workshopen skal vi lære hvordan vi kan bruke en MXChip IoT DevKit AZ3166 som en språk oversetter ved hjelp av Azure Cognitive Services. Etter workshopen skal devicen kunne ta opp stemmen din, oversette det du sa i skyen, og skrive det ut til skjermen på kortet.
+I denne workshopen skal vi lære hvordan vi kan bruke en MXChip IoT DevKit AZ3166 som en språkoversetter ved hjelp av Azure Cognitive Services. Etter workshopen skal devicen kunne ta opp stemmen din, oversette det du sa i skyen, og skrive det ut til skjermen på kortet.
 
-Måten systemet fungerer på er at MXChipen tar opp stemmen din og poster en HTTP request for å trigge en Azure Function. Azure Functionen kaller på Azure Cognitive Services tale oversettelses API for å gjøre oversettelsen. Etter at Azure Funksjonen får returnert oversatt teks sender den en C2D (Cloud-to-Device) melding til devicen. Den oversatte teksen blir så vist på skjermen.
+Måten systemet fungerer på er at MXChipen tar opp stemmen din og poster en HTTP request for å trigge en Azure Function. Azure Functionen kaller på Azure Cognitive Services taleoversettelses-API for å gjøre selve oversettelsen. Etter at Azure Funksjonen får returnert oversatt teks sender den en C2D (Cloud-to-Device) melding til devicen. Den oversatte teksen blir så vist på skjermen.
 
 <img src="diagram.png" alt="arkitektur" width=600>
 
@@ -23,7 +23,7 @@ Dette trenger du for å kunne gjennomføre workshopen.
 
   - Windows: Last ned og installer [her.](https://www.st.com/en/development-tools/stsw-link009.html)
   - macOS: Driver er ikke nødvendig for macOS.
-  - Kjør følgende kommando i terminalen, deretter logg ut og logg inn for at endringen skal ta effekt.
+  - Ubuntu: Kjør følgende kommandoer i terminalen, deretter logg ut og logg inn for at endringen skal ta effekt.
 
   ```
   # Copy the default rules. This grants permission to the group 'plugdev'
@@ -43,8 +43,8 @@ Etter å ha installert det overnevnte er vi klare til å sette opp utviklingsmil
 2.  Søk også opp **Azure IoT Tools** inne på _Extensions_ og installer.
 3.  Konfigurer VSCode med Arduino Instillinger.
 
-    - Klikk på Fil > Preferences > Settings.
-    - Klikk så på _Open Settings (JSON)_
+    - Klikk på File > Preferences > Settings.
+    - Klikk så på _Open Settings (JSON)_ evt. søk opp _settings.json_ og velg "_Edit in settings.json_"
     - Legg til følgende linjer avhenging av ditt OS.
 
       - **Windows:**
@@ -88,7 +88,7 @@ Det følger med en haug med gode eksempel-prosjekter med MXChipen, derfor er det
 
 8. Velg så _Create a new IoT Hub device_, og velg AZ3166.
 
-NB! Kopier og noter ned _Connection String_, denne trenger du senere.
+NB! Kopier og noter ned _IoTHub Connection String_, denne trenger du senere.
 
 ## Koble til MXChip til WiFi
 
@@ -96,9 +96,9 @@ Vi skal nå gjøre MXChipen klar.
 
 1. Last ned nyeste versjonen av firmware for IoT DevKitet [her.](https://aka.ms/devkit/prod/getstarted/latest)
 
-2. Åpne **AZ3166** inne i filsystemet på PC'en.
+2. Åpne enheten/disken **AZ3166** inne i filsystemet på PC'en.
 
-3. Dra og slipp firmware filen her.
+3. Dra og slipp firmware filen til enheten via filsystemet.
 
 4. På MXChipen, hold ned knapp **B** og klikk en gang på **Reset** knappen. Slipp så **B** knappen. MXChipen går inn i i _AP mode_. For å bekrefte dette kan du se på skjermen at MXChipens SSID og IP-adressen for konfigurasjon vises.
 
@@ -120,13 +120,13 @@ OBS! Det kan hende at det nå kjører et program på MXCHipen, hvor den leser Te
 
 - Opprett en Speech resource ved fylle ut de nødvendige feltene. Pass på å velge den ressursgruppen som du allerede har opprettet.
 
-- Gå inn på Speech ressursen du nettopp opprettet. Klikk på **Keys** i margen, og kopier **Key1**.
+- Gå inn på Speech ressursen du nettopp opprettet. Klikk på **Keys and Endpoint** i margen, og kopier **Key1** (og gjerne **region**).
 
 NB! Anbefaler å bruke en region i nærheten av Norge, men kanskje ikke East/West Norway. Europa regionene er fine å bruke, eller f.eks. eastus.
 
 ### Benytt Speech Service i Azure Cognitive Service med Azure Functions
 
-- Gå nå tilbake til Visual Studio Code og åpne filen som heter _`Functions\DevKitTranslatorFunction`_ og oppdater følgende linjer:
+- Gå nå tilbake til Visual Studio Code og åpne filen som heter _`Functions\DevKitTranslatorFunction.cs`_ og oppdater følgende linjer med henholdsvis **Key1** og **region** som du tidligere kopierte fra Sppech ressursen, samt. **AZ3166**.
 
 ```
 // Subscription Key of Speech Service
