@@ -45,6 +45,9 @@ Etter å ha installert det overnevnte er vi klare til å sette opp utviklingsmil
 
     - Klikk på File > Preferences > Settings.
     - Klikk så på _Open Settings (JSON)_ evt. søk opp _settings.json_ og velg "_Edit in settings.json_"
+
+        <img src="Json.png" alt="json" width=100>
+
     - Legg til følgende linjer avhenging av ditt OS.
 
       - **Windows:**
@@ -86,9 +89,11 @@ Det følger med en haug med gode eksempel-prosjekter med MXChipen, derfor er det
 
 7. Velg så _Create new IoTHub_. Følg guiden, du skal nå kunne se en provisjonert IoT Hub i output vinduet.
 
-8. Velg så _Create a new IoT Hub device_, og velg AZ3166.
+8. Velg så _Create a new IoT Hub device_, og velg Create New Device. Følg så prosessen.
 
-NB! Kopier og noter ned _IoTHub Connection String_, denne trenger du senere.
+NB! Kopier og noter ned _IoT Device Connection String_, denne trenger du senere.
+
+9. Velg så _Create new Azure Function_, og følg prosessen for å lage en ny Azure Function.
 
 ## Koble til MXChip til WiFi
 
@@ -126,7 +131,7 @@ NB! Anbefaler å bruke en region i nærheten av Norge, men kanskje ikke East/Wes
 
 ### Benytt Speech Service i Azure Cognitive Service med Azure Functions
 
-- Gå nå tilbake til Visual Studio Code og åpne filen som heter _`Functions\DevKitTranslatorFunction.cs`_ og oppdater følgende linjer med henholdsvis **Key1** og **region** som du tidligere kopierte fra Sppech ressursen, samt. **AZ3166**.
+- Gå nå tilbake til Visual Studio Code og åpne filen som heter _`Functions\DevKitTranslatorFunction.cs`_ og oppdater følgende linjer med henholdsvis **Key1** og **region** som du tidligere kopierte fra Speech ressursen, samt. det du har kalt devicen..
 
 ```
 // Subscription Key of Speech Service
