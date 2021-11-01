@@ -2,7 +2,7 @@
 
 I denne workshopen skal vi lære hvordan vi kan bruke en MXChip IoT DevKit AZ3166 som en språkoversetter ved hjelp av Azure Cognitive Services. Etter workshopen skal devicen kunne ta opp stemmen din, oversette det du sa i skyen, og skrive det ut til skjermen på kortet.
 
-Måten systemet fungerer på er at MXChipen tar opp stemmen din og poster en HTTP request for å trigge en Azure Function. Azure Functionen kaller på Azure Cognitive Services taleoversettelses-API for å gjøre selve oversettelsen. Etter at Azure Funksjonen får returnert oversatt teks sender den en C2D (Cloud-to-Device) melding til devicen. Den oversatte teksen blir så vist på skjermen.
+Måten systemet fungerer på er at MXChipen tar opp stemmen din og poster en HTTP request for å trigge en Azure Function. Azure Functionen kaller på Azure Cognitive Services taleoversettelses-API for å gjøre selve oversettelsen. Etter at Azure Funksjonen får returnert oversatt tekst sender den en C2D (Cloud-to-Device) melding til devicen. Den oversatte teksten blir så vist på skjermen.
 
 <img src="diagram.png" alt="arkitektur" width=600>
 
@@ -16,6 +16,7 @@ Dette trenger du for å kunne gjennomføre workshopen.
 
 - En MXChip IoT DevKit Board. (Dette får du utdelt på kurset).
 - En PC som kjører Windows 10, macOS 10.10+ eller Ubuntu 18.04+.
+- Sjekk at du har .NET Core v2.1 installert på din PC. Dette kan du sjekke opp ved å bruke `dotnet --list-sdks` i en terminal. Hvis du ikke har en av 2.1 versjonen så kan du laste det ned [her](https://dotnet.microsoft.com/download/dotnet/2.1). 
 - En aktiv Azure Subscription. [Du kan aktivere en 30-dagers trial lisens her.](https://azure.microsoft.com/nb-no/free/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Arduino IDE](https://www.arduino.cc/en/software) (OBS! For Windows brukere: Benytt Windows Installer, ikke App Store versjonen.)
@@ -75,6 +76,10 @@ Etter å ha installert det overnevnte er vi klare til å sette opp utviklingsmil
 
 Det følger med en haug med gode eksempel-prosjekter med MXChipen, derfor er det en god device å starte med når man skal lære om IoT. Vi skal ta utgangspunkt i et av disse eksemplene.
 
+**NB! IKKE VELG BASIC TIER PÅ RESSURSENE SOM BLIR LAGET I PUNKTENE UNDER (VELG GJERNE _FREE TIER_)**
+**NB! VELG SAMME REGION FOR ALLE RESSURSER SOM LAGES. IKKE VELG NOEN AV REGIONENE I NORGE. BRUK HELST _WEST EUROPE_ ELLER _EAST US_.** 
+**NB! Det kan hende dere får opp en firewall melding. Bare godkjenn.**
+
 1. Start med å koble MXChipen fra PC'en. Start VSCode først, og deretter koble MXChipen til.
 
 2. Klikk `F1` for å åpne _Command Palette_. Søk og velg **Azure IoT Device Workbench: Open Example...** Velg så **IoT DevKit** som board.
@@ -91,7 +96,7 @@ Det følger med en haug med gode eksempel-prosjekter med MXChipen, derfor er det
 
 8. Velg så _Create a new IoT Hub device_, og velg Create New Device. Følg så prosessen.
 
-9. Velg så _Create new Azure Function_, og følg prosessen for å lage en ny Azure Function.
+9. Velg så _Create new Azure Function_, og følg prosessen for å lage en ny Azure Function. Her skal du velge .NET versjon av Azure Function og ikke Node.js.
 
 **NB! Kopier og noter ned _IoT Device Connection String_, denne trenger du senere.**
 
