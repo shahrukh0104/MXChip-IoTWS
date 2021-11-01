@@ -91,9 +91,9 @@ Det følger med en haug med gode eksempel-prosjekter med MXChipen, derfor er det
 
 8. Velg så _Create a new IoT Hub device_, og velg Create New Device. Følg så prosessen.
 
-NB! Kopier og noter ned _IoT Device Connection String_, denne trenger du senere.
-
 9. Velg så _Create new Azure Function_, og følg prosessen for å lage en ny Azure Function.
+
+**NB! Kopier og noter ned _IoT Device Connection String_, denne trenger du senere.**
 
 ## Koble til MXChip til WiFi
 
@@ -150,7 +150,7 @@ const string deviceName = "";
 
 - Gå tilbake til Azure Portalen, og finn _Function Appen_ du nettopp har laget. Enten ved å gå inn i ressursgruppen, eller ved å klikke på _Function Apps_ i burgermenyen oppe i venstre hjørne.
 
-- Klikk på **Functions** og deretter **devkit_translator**. Klikk deretter på **Get Function URL** for å kopiere URLen.
+- Klikk på **Functions** i menyen til venstre og deretter **devkit_translator**. Klikk deretter på **Get Function URL** for å kopiere URLen.
 
 - Kopier inn URLen i `azure_config.h` filen i VSCode.
 
@@ -162,7 +162,8 @@ Vi skal nå bygge og laste opp device koden på MXChipen.
 
 På skjermen skal du nå kunne se en _id_ og _Configuration_.
 
-- Klikk `F1` i VSCode, søk og velg **Azure IoT Device Workbench: Configure Device Settings... > Config Device Connection String**. Velg **Select IoT Hub Device Connection String** for å konfigurere denne til MXChipen. Dersom du gjorde dette da du koblet chipen opp til WiFi så skal ikke dette steget være nødvendig.
+
+- **_(Dersom du gjorde dette da du koblet chipen opp til WiFi så skal ikke dette steget være nødvendig.)_** Klikk `F1` i VSCode, søk og velg **Azure IoT Device Workbench: Configure Device Settings... > Config Device Connection String**. Velg **Select IoT Hub Device Connection String** for å konfigurere denne til MXChipen. 
 
 - Klikk `F1` igjen, søk og velg **Azure IoT Device Workbench: Upload Device Code**. Du kan nå se i Output vinduet at koden kompileres og lastes opp til MXChipen.
 
