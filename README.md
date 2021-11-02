@@ -69,6 +69,7 @@ Etter å ha installert det overnevnte er vi klare til å sette opp utviklingsmil
         "arduino.path": "/home/{username}/Downloads/arduino-1.8.8",
         "arduino.additionalUrls":"https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
+    **Husk å lagre filen**
 
 4.  Click `F1` for å åpne _Command Palette_. Skriv og velg **Arduino: Board Manager**. Søk på AZ3166 og installer den nyeste versjonen.
 
